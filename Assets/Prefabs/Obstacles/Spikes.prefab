@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2328309432530680838}
   - component: {fileID: 2287821001890256837}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Triangle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5964332872567828595}
   - component: {fileID: 8728696364217296192}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4065954680545680917}
   - component: {fileID: 5883804149818531181}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Triangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,9 +263,9 @@ GameObject:
   - component: {fileID: 5359096491536241674}
   - component: {fileID: 5333985642182366752}
   - component: {fileID: 7801931887021849556}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spikes
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

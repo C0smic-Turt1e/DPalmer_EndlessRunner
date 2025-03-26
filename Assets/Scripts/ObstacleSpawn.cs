@@ -1,23 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObstacleSpawn : MonoBehaviour
 {
 
-    [SerializeField] private GameObject obstacle;
+    [SerializeField] private List<GameObject> obstaclePrefabs = new List<GameObject>();
+    
     [SerializeField] private float obstacleSpeed = 3f;
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-
-
-    }//end Start()
+    [SerializeField] private float spawnTimeMin = 2f;
+    [SerializeField] private float spawnTimeMax = 5f;
+    private float spawnTimer;
+    public float obstacleSpawnTime = 2f;
 
 
 
@@ -30,6 +26,8 @@ public class ObstacleSpawn : MonoBehaviour
             Spawn();
         }
 
+        SpawnLoop();
+
     }//end Update()
 
 
@@ -37,7 +35,18 @@ public class ObstacleSpawn : MonoBehaviour
     private void SpawnLoop()
     {
 
+        spawnTimer += Time.deltaTime;
 
+        if (spawnTimer >= obstacleSpawnTime)
+        {
+
+            Spawn();
+
+            obstacleSpawnTime = Random.Range(spawnTimeMin, spawnTimeMax);
+            spawnTimer = 0;
+
+
+        }
 
     }//end SpawnLoop()
 
@@ -46,7 +55,9 @@ public class ObstacleSpawn : MonoBehaviour
     private void Spawn()
     {
 
-        GameObject spawnedObstacle = Instantiate(obstacle, transform.position, Quaternion.identity);
+        GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)];
+
+        GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity);
         Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>();
 
         obstacleRB.velocity = Vector2.left * obstacleSpeed;

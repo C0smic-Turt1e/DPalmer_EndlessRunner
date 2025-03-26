@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded;
     private bool isJumping;
+    private bool isFlipping;
     private float jumpTimer;
 
 
@@ -50,8 +51,25 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
+
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                Debug.Log("Flipping!");
+                isFlipping = true;
+            }
+
             playerRB.velocity = Vector2.up * jumpForce;
             isJumping = true;
+        }
+
+        if (isFlipping == true)
+        {
+            transform.RotateAround(transform.position, transform.up, transform.rotation.z + 10);
+
+            if (transform.rotation.z == 0)
+            {
+                isFlipping = false;
+            }
         }
 
 
