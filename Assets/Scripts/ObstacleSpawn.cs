@@ -15,6 +15,8 @@ public class ObstacleSpawn : MonoBehaviour
     private float spawnTimer;
     public float obstacleSpawnTime = 2f;
 
+    [SerializeField] private ObstacleKill obstacleKill;
+
 
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class ObstacleSpawn : MonoBehaviour
         GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)];
 
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity);
+        spawnedObstacle.AddComponent<ObstacleKill>();
         Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>();
 
         obstacleRB.velocity = Vector2.left * obstacleSpeed;

@@ -164,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.022405863}
+  m_Offset: {x: 0, y: 0.33183324}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -175,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.985857}
+  m_Size: {x: 1, y: 2.6047118}
   m_EdgeRadius: 0
 --- !u!114 &175534615
 MonoBehaviour:
@@ -296,7 +296,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 5.9774504
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -321,7 +321,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 1.58, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -454,16 +454,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 2365991864534295906, guid: c3c74272f9916304982d6441560db80b, type: 3}
-  - {fileID: 2365991864534295906, guid: 304ac72c76ef6d34fbf1c2e365d3edde, type: 3}
-  - {fileID: 2365991864534295906, guid: ff1c8147b257e6546866164db88ce376, type: 3}
-  - {fileID: 2390706629090518008, guid: 575672af0c22db141988cb66d21c625e, type: 3}
-  - {fileID: 5798780944757753992, guid: 1ac43ead975c2cb4881bc85f6c40466a, type: 3}
-  - {fileID: 3755179702686883354, guid: b7792bffe36a59d44ad8fe965ac115a0, type: 3}
-  obstacleSpeed: 8
+  - {fileID: 3298506011114346897, guid: f438d179a0cb90549836c3b337e35d73, type: 3}
+  - {fileID: 2244950591342979942, guid: 7ec9e1602c119e04b9069cb576c151f0, type: 3}
+  - {fileID: 2124238420877472309, guid: 1750674ca38d8f34ead88bdb2dcb618b, type: 3}
+  - {fileID: 3348607278859560647, guid: b5ea3d7f9ae1f474380eea04242b1dff, type: 3}
+  - {fileID: 7488832812706821099, guid: e357d6e5cfbb28743869d3bfa7460431, type: 3}
+  - {fileID: 3084076940950257757, guid: 901c511859279b542be63a4a627c31e3, type: 3}
+  - {fileID: 2212584067008461003, guid: a472075842ef6264da3d0709936ae2a4, type: 3}
+  - {fileID: 4935302372898435979, guid: ea3c3ce6f351018429771bdd24a0644c, type: 3}
+  obstacleSpeed: 5
   spawnTimeMin: 1
   spawnTimeMax: 3
   obstacleSpawnTime: 2
+  obstacleKill: {fileID: 0}
 --- !u!4 &799138551
 Transform:
   m_ObjectHideFlags: 0

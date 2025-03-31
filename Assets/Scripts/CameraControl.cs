@@ -15,7 +15,7 @@ public class CameraControl : MonoBehaviour
     void Update()
     {
 
-        transform.position = new Vector3(followTarget.transform.position.x - xOffset, followTarget.transform.position.y - yOffset, transform.position.z);
+        //transform.position = new Vector3(followTarget.transform.position.x - xOffset, followTarget.transform.position.y - yOffset, transform.position.z);
 
     }//end Update()
 
