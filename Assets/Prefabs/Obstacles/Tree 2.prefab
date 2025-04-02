@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2647747928309721299}
   - component: {fileID: 5243303693499177685}
   - component: {fileID: 425937557025992813}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tree 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6402062968155892343}
   - component: {fileID: 1184232746414042293}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ Transform:
   m_GameObject: {fileID: 6393943779117774221}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.99, z: 0}
+  m_LocalPosition: {x: 0, y: 4.16, z: 0}
   m_LocalScale: {x: 1.0801196, y: 1.0801196, z: 1.0801196}
   m_ConstrainProportionsScale: 0
   m_Children: []

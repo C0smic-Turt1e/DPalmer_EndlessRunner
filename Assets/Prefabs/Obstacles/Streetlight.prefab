@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3539661565853668041}
   - component: {fileID: 2015550964559018288}
   - component: {fileID: 261914407169986713}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Streetlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7317167269826483071}
   - component: {fileID: 5014768427545336703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
