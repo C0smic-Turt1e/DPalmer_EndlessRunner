@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics2D.OverlapCircle(feetPos.position, 0.25f, groundLayer) == true)
         {
             isGrounded = true;
+            GetComponentInChildren<Animator>().SetTrigger("Stop Jump");
         } else
         {
             isGrounded = false;
@@ -54,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
             playerRB.velocity = Vector2.up * jumpForce;
             isJumping = true;
             GameManager.Instance.currentScore += 20f;
+            GetComponentInChildren<Animator>().SetTrigger("Jump");
         }
 
         if (isJumping == true && Input.GetButton("Jump")) 
