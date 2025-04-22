@@ -27,14 +27,22 @@ public class UserInterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreDisplay;
     [SerializeField] private Slider healthBar;
 
-
+    [SerializeField] private Button startButton;
+    [SerializeField] private GameObject startScreen;
 
     private void OnGUI()
     {
-        scoreDisplay.text = GameManager.Instance.ScoreDisplay();
+        scoreDisplay.text = GameManager.Instance.DistanceDisplay();
         healthBar.value = GameManager.Instance.currentScore;
 
     }//end OnGUI()
+
+
+    public void StartGame()
+    {
+        startScreen.SetActive(false);
+        Time.timeScale = 1;
+    }
 
 
 

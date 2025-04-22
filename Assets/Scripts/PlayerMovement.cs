@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,10 +11,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpTime = 0.3f;
     [SerializeField] private Transform feetPos;
     [SerializeField] private LayerMask groundLayer; //what layer of objects counts as the ground;
+    [SerializeField] private LayerMask trickLayer;
 
     private bool isGrounded;
     private bool isJumping;
-    private bool isFlipping;
+    //private bool isBackflipping;
     private float jumpTimer;
 
 
@@ -43,20 +45,63 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
             GetComponentInChildren<Animator>().SetTrigger("Stop Jump");
+            GetComponentInChildren<Animator>().speed = 1;
         } else
         {
             isGrounded = false;
         }
 
 
-
+        //checks for jump tricks or normal jump
         if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) //backflip
+            {
+
+                if (Physics2D.OverlapCircle(this.transform.position, 20f, trickLayer) == true)
+                {
+                    GameManager.Instance.newPoints += 20f;
+                } else 
+                {
+                    GameManager.Instance.newPoints += 5f;
+                }
+
+                    GetComponentInChildren<Animator>().SetTrigger("Backflip");
+
+            } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) //frontflip
+            {
+
+                if (Physics2D.OverlapCircle(this.transform.position, 20f, trickLayer) == true)
+                {
+                    GameManager.Instance.newPoints += 20f;
+                }
+                else
+                {
+                    GameManager.Instance.newPoints += 5f;
+                }
+                GetComponentInChildren<Animator>().SetTrigger("Frontflip");
+
+            } else ///normal jump
+            {
+
+                if (Physics2D.OverlapCircle(this.transform.position, 20f, trickLayer) == true)
+                {
+                    GameManager.Instance.newPoints += 7f;
+                }
+                else
+                {
+                    GameManager.Instance.newPoints += 5f;
+                }
+                GetComponentInChildren<Animator>().SetTrigger("Jump");
+
+            }
+
             playerRB.velocity = Vector2.up * jumpForce;
             isJumping = true;
-            GameManager.Instance.currentScore += 20f;
-            GetComponentInChildren<Animator>().SetTrigger("Jump");
+
         }
+
+
 
         if (isJumping == true && Input.GetButton("Jump")) 
         {

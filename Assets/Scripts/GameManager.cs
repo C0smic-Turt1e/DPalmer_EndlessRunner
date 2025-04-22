@@ -27,16 +27,22 @@ public class GameManager : MonoBehaviour
 
     public bool isPlaying;
     public float currentScore;
+    public float newPoints = 0;
+    private float addPointsTimer = 0;
     public float maxScore = 100;
     private float playerKillLimit = -13.5f;
 
     public int currentCollected = 0;
 
+    public float distance = 0;
+    public float gameSpeed = 1;
+    private float difficultyIncreaser = 0;
 
 
     private void Start()
     {
-        isPlaying = true;
+        isPlaying = false;
+        Time.timeScale = 0;
         currentScore = maxScore;
     }//end Start()
 
@@ -62,23 +68,46 @@ public class GameManager : MonoBehaviour
         }
 
 
+
         //score stuff
         if(isPlaying == true)
         {
-            currentScore -= 0.03f;
+            currentScore -= Time.deltaTime * 4;
         }
 
         if(currentScore > maxScore)
         {
+
             currentScore = maxScore;
+            newPoints = 0;
+            addPointsTimer = 0;
+
+        }else
+        {
+
+            //adding points incrementally
+            if (newPoints > addPointsTimer)
+            {
+                currentScore += Time.deltaTime * 50;
+                addPointsTimer += Time.deltaTime * 50;
+            }
+            else
+            {
+                newPoints = 0;
+                addPointsTimer = 0;
+            }
+
         }
 
-        if(currentScore <= 0)
+        if (currentScore <= 0)
         {
             GameOver();
         }
 
-        //player.transform.position = new Vector2 (playerKillLimit + (currentScore * 0.07f), player.transform.position.y);
+        player.transform.position = new Vector3(playerKillLimit + (currentScore * 0.07f), player.transform.position.y, player.transform.position.z);
+
+        distance += (Time.deltaTime * gameSpeed * 2);
+        DifficultyIncrease();
 
     }//end Update()
 
@@ -97,8 +126,11 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+
         isPlaying = false;
         player.SetActive(false);
+        Time.timeScale = 0;
+
     }//end GameOver()
 
 
@@ -107,6 +139,36 @@ public class GameManager : MonoBehaviour
     {
         return Mathf.RoundToInt(currentScore).ToString();
     }//end ScoreDisplay()
+
+
+    public string DistanceDisplay()
+    {
+        return Mathf.RoundToInt(distance).ToString();
+    }//end ScoreDisplay()
+
+
+
+    public void DifficultyIncrease()
+    {
+
+        if (distance < 50)
+        {
+
+            gameSpeed = 1;
+            difficultyIncreaser = 50;
+
+        } else if (distance >= 50)
+        {
+            if (distance >= difficultyIncreaser)
+            {
+
+                gameSpeed += 0.5f;
+                difficultyIncreaser = difficultyIncreaser * 1.5f;
+
+            }
+        }
+
+    }//end DifficultyIncrease()
 
 
 
