@@ -8,10 +8,10 @@ public class ObstacleSpawn : MonoBehaviour
 
     [SerializeField] private List<GameObject> obstaclePrefabs = new List<GameObject>();
     
-    [SerializeField] private float obstacleSpeed = 3f;
+    public float obstacleSpeed = 5f;
 
-    [SerializeField] private float spawnTimeMin = 2f;
-    [SerializeField] private float spawnTimeMax = 5f;
+    public float spawnTimeMin = 2f;
+    public float spawnTimeMax = 5f;
     private float spawnTimer;
     public float obstacleSpawnTime = 2f;
     

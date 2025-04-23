@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class ForegroundMove : MonoBehaviour
@@ -39,6 +40,11 @@ public class ForegroundMove : MonoBehaviour
         }
 
     }//end Update()
+
+    public void SpeedUp(float newSpeed)
+    {
+        foregroundRB.velocity = Vector2.left * newSpeed;
+    }
 
 
 

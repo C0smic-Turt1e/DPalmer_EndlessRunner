@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
     public float gameSpeed = 1;
     private float difficultyIncreaser = 0;
 
+    public ObstacleSpawn obSpawn;
+    public ForegroundMove fMove;
+
+    private float scoreDecreaser = 4;
+
 
     private void Start()
     {
@@ -72,7 +77,7 @@ public class GameManager : MonoBehaviour
         //score stuff
         if(isPlaying == true)
         {
-            currentScore -= Time.deltaTime * 4;
+            currentScore -= Time.deltaTime * scoreDecreaser;
         }
 
         if(currentScore > maxScore)
@@ -116,10 +121,24 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
 
+        distance = 0;
+        gameSpeed = 1;
+        difficultyIncreaser = 0;
+
+        obSpawn.obstacleSpeed = 5;
+        obSpawn.spawnTimeMax = 3;
+        obSpawn.spawnTimeMin = 1;
+
+        fMove.SpeedUp(obSpawn.obstacleSpeed);
+
+        scoreDecreaser = 4;
+
         isPlaying = true;
         currentScore = maxScore;
         player.SetActive(true);
-        currentCollected = 0;
+        UserInterfaceManager.Instance.RestartGame();
+        Time.timeScale = 1;
+
 
     }//end ResetGame()
 
@@ -127,6 +146,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
 
+        UserInterfaceManager.Instance.LoseGame();
         isPlaying = false;
         player.SetActive(false);
         Time.timeScale = 0;
@@ -159,11 +179,27 @@ public class GameManager : MonoBehaviour
 
         } else if (distance >= 50)
         {
-            if (distance >= difficultyIncreaser)
+            if (distance > difficultyIncreaser)
             {
 
-                gameSpeed += 0.5f;
-                difficultyIncreaser = difficultyIncreaser * 1.5f;
+                difficultyIncreaser = difficultyIncreaser * 2;
+                gameSpeed += 0.25f;
+                obSpawn.obstacleSpeed = obSpawn.obstacleSpeed + gameSpeed;
+
+                obSpawn.spawnTimeMax = obSpawn.spawnTimeMax - (gameSpeed * 0.1f);
+                if (obSpawn.spawnTimeMax <= 1)
+                {
+                    obSpawn.spawnTimeMax = 1;
+                }
+
+                obSpawn.spawnTimeMin = obSpawn.spawnTimeMin - (gameSpeed * 0.1f);
+                if (obSpawn.spawnTimeMin <= 0)
+                {
+                    obSpawn.spawnTimeMin = 0;
+                }
+
+                fMove.SpeedUp(obSpawn.obstacleSpeed);
+                scoreDecreaser += gameSpeed;
 
             }
         }

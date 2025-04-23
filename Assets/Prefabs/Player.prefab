@@ -84,6 +84,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  trickLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &6038705190779852509
 MonoBehaviour:
   m_ObjectHideFlags: 0

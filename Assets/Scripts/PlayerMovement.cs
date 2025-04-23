@@ -56,10 +56,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) //backflip
-            {
+            {              
 
-                if (Physics2D.OverlapCircle(this.transform.position, 20f, trickLayer) == true)
+                if (Physics2D.OverlapCircle(feetPos.position, 0.25f, trickLayer) == true)
                 {
+                    Debug.Log("Backflip!");
                     GameManager.Instance.newPoints += 20f;
                 } else 
                 {
@@ -71,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) //frontflip
             {
 
-                if (Physics2D.OverlapCircle(this.transform.position, 20f, trickLayer) == true)
+                if (Physics2D.OverlapCircle(this.transform.position, 0.25f, trickLayer) == true)
                 {
                     GameManager.Instance.newPoints += 20f;
                 }
@@ -84,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
             } else ///normal jump
             {
 
-                if (Physics2D.OverlapCircle(this.transform.position, 20f, trickLayer) == true)
+                if (Physics2D.OverlapCircle(this.transform.position, 0.25f, trickLayer) == true)
                 {
                     GameManager.Instance.newPoints += 7f;
                 }

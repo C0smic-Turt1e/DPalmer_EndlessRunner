@@ -30,6 +30,8 @@ public class UserInterfaceManager : MonoBehaviour
     [SerializeField] private Button startButton;
     [SerializeField] private GameObject startScreen;
 
+    [SerializeField] private GameObject loseScreen;
+
     private void OnGUI()
     {
         scoreDisplay.text = GameManager.Instance.DistanceDisplay();
@@ -38,12 +40,37 @@ public class UserInterfaceManager : MonoBehaviour
     }//end OnGUI()
 
 
+
+    private void Start()
+    {
+
+        loseScreen.SetActive(false);
+
+    }//end Start()
+
+
+
     public void StartGame()
     {
         startScreen.SetActive(false);
         Time.timeScale = 1;
-    }
+        GameManager.Instance.isPlaying = true;
+    }//end StartGame()
 
+
+
+    public void LoseGame()
+    {
+
+        loseScreen.SetActive(true);
+
+    }//end LoseGame()
+
+
+    public void RestartGame()
+    {
+        loseScreen.SetActive(false);
+    }
 
 
 
