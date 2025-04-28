@@ -31,6 +31,7 @@ public class UserInterfaceManager : MonoBehaviour
     [SerializeField] private GameObject startScreen;
 
     [SerializeField] private GameObject loseScreen;
+    [SerializeField] private Button loseButton;
 
     private void OnGUI()
     {
@@ -45,6 +46,7 @@ public class UserInterfaceManager : MonoBehaviour
     {
 
         loseScreen.SetActive(false);
+        loseButton.gameObject.SetActive(false);
 
     }//end Start()
 
@@ -63,6 +65,8 @@ public class UserInterfaceManager : MonoBehaviour
     {
 
         loseScreen.SetActive(true);
+        loseButton.gameObject.SetActive(true);
+        loseButton.interactable = true;
 
     }//end LoseGame()
 
@@ -70,6 +74,7 @@ public class UserInterfaceManager : MonoBehaviour
     public void RestartGame()
     {
         loseScreen.SetActive(false);
+        loseButton.gameObject.SetActive(false);
     }
 
 
